@@ -2063,7 +2063,7 @@ const app = http.createServer((request, response) => {
     }
     catch(err) {
         response.writeHead(503, { 'Content-Type': 'application/json' })
-        response.end({"Service Unavailable: 503"})
+        response.end(JSON.stringify('{"Service Unavailable": 503}'))
     }
 })
 
