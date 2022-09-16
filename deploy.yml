@@ -37,7 +37,7 @@
         src={{ release_path }}
         dest={{ current_path }}
         state=link
-    - name: Install nginx site for letsencrypt requests
+    - name: Configure new relic monitoring
       template:
        src: templates/newrelic.js.j2
        dest: {{ current_path }}/newrelic.js
