@@ -40,7 +40,7 @@
     - name: Configure new relic monitoring
       template:
        src: templates/newrelic.js.j2
-       dest: {{ current_path }}/newrelic.js
+       dest: "{{ current_path }}"/newrelic.js
     - name: Delete old pm2 process
       command: pm2 delete "{{ appName }}"
       ignore_errors: yes
