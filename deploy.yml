@@ -3,7 +3,7 @@
   become: yes
   become_user: root
   vars:
-    project_path: /var/www/node/node-cap-tf
+    project_path: /var/www/node/"{{ appName }}"
   tasks:
     - name: Create project folder
       ansible.builtin.shell: mkdir "{{ project_path }}"
@@ -42,10 +42,10 @@
        src: templates/newrelic.js.j2
        dest: {{ current_path }}/newrelic.js
     - name: Delete old pm2 process
-      command: pm2 delete node-cap-tf
+      command: pm2 delete "{{ appName }}"
       ignore_errors: yes
     - name: Start pm2
-      command: pm2 start {{ current_path }}/index.js --name node-cap-tf
+      command: pm2 start {{ current_path }}/index.js --name "{{ appName }}"
     - name: Delete old dir
       shell: rm -rf {{ current_release_path.stdout }}/
       when: current_release_path.stdout != current_path
