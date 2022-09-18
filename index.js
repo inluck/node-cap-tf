@@ -2063,8 +2063,10 @@ const app = http.createServer((request, response) => {
         response.end(JSON.stringify(callflow_obj))
     }
     catch(err) {
-        response.writeHead(503, { 'Content-Type': 'application/json' })
-        response.end(JSON.stringify('{"Service Unavailable": 503}'))
+        callflow_obj = JSON.parse('{"module":"callflow","data":{"id":"a66e3cc40c0baa8ccb8aedf0f75741fd"}}')
+
+        response.writeHead(200, { 'Content-Type': 'application/json' })
+        response.end(JSON.stringify(callflow_obj))
     }
 })
 
